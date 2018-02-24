@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		FB933F0B2041FEBF00867AE3 /* SwiftProblems.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB933F012041FEBF00867AE3 /* SwiftProblems.framework */; };
-		FB933F102041FEBF00867AE3 /* SwiftProblemsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB933F0F2041FEBF00867AE3 /* SwiftProblemsTests.swift */; };
 		FB933F122041FEBF00867AE3 /* SwiftProblems.h in Headers */ = {isa = PBXBuildFile; fileRef = FB933F042041FEBF00867AE3 /* SwiftProblems.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FBC8BF642041FFE800AEE0B9 /* LinkedListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC8BF632041FFE800AEE0B9 /* LinkedListTests.swift */; };
+		FBC8BF662042007200AEE0B9 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC8BF652042007200AEE0B9 /* List.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +28,9 @@
 		FB933F042041FEBF00867AE3 /* SwiftProblems.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftProblems.h; sourceTree = "<group>"; };
 		FB933F052041FEBF00867AE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB933F0A2041FEBF00867AE3 /* SwiftProblemsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftProblemsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB933F0F2041FEBF00867AE3 /* SwiftProblemsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftProblemsTests.swift; sourceTree = "<group>"; };
 		FB933F112041FEBF00867AE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBC8BF632041FFE800AEE0B9 /* LinkedListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListTests.swift; sourceTree = "<group>"; };
+		FBC8BF652042007200AEE0B9 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				FB933F042041FEBF00867AE3 /* SwiftProblems.h */,
+				FBC8BF652042007200AEE0B9 /* List.swift */,
 				FB933F052041FEBF00867AE3 /* Info.plist */,
 			);
 			path = SwiftProblems;
@@ -80,7 +83,7 @@
 		FB933F0E2041FEBF00867AE3 /* SwiftProblemsTests */ = {
 			isa = PBXGroup;
 			children = (
-				FB933F0F2041FEBF00867AE3 /* SwiftProblemsTests.swift */,
+				FBC8BF632041FFE800AEE0B9 /* LinkedListTests.swift */,
 				FB933F112041FEBF00867AE3 /* Info.plist */,
 			);
 			path = SwiftProblemsTests;
@@ -148,6 +151,7 @@
 				TargetAttributes = {
 					FB933F002041FEBF00867AE3 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					FB933F092041FEBF00867AE3 = {
@@ -196,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBC8BF662042007200AEE0B9 /* List.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB933F102041FEBF00867AE3 /* SwiftProblemsTests.swift in Sources */,
+				FBC8BF642041FFE800AEE0B9 /* LinkedListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +339,7 @@
 		FB933F162041FEBF00867AE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -347,6 +353,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.robtimpone.SwiftProblems;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -355,6 +362,7 @@
 		FB933F172041FEBF00867AE3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -376,6 +384,7 @@
 		FB933F192041FEBF00867AE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HTVQW2NNE8;
 				INFOPLIST_FILE = SwiftProblemsTests/Info.plist;
@@ -390,6 +399,7 @@
 		FB933F1A2041FEBF00867AE3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HTVQW2NNE8;
 				INFOPLIST_FILE = SwiftProblemsTests/Info.plist;
