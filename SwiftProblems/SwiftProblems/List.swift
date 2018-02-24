@@ -29,3 +29,9 @@ class List<T> {
         self.init(Array(values))
     }
 }
+
+extension List {
+    var last: T? {
+        return nextItem?.last ?? value
+    }
+}
