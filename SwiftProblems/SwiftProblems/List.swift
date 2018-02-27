@@ -30,8 +30,26 @@ class List<T> {
     }
 }
 
+//MARK: P01 - Find the last element of a linked list
+
 extension List {
     var last: T? {
         return nextItem?.last ?? value
+    }
+}
+
+//MARK: P02 - Find the second to last element of a linked list
+
+extension List {
+    
+    var isLastItem: Bool {
+        return nextItem == nil
+    }
+    
+    var pennultimate: T? {
+        guard let next = nextItem else {
+            return nil
+        }
+        return next.isLastItem ? value : next.pennultimate
     }
 }
