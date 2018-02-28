@@ -59,24 +59,16 @@ extension List {
 extension List {
     
     subscript(index: Int) -> T? {
-        
-        var currentIndex = 0
+
         var currentList = self
         
-        while currentIndex <= index {
-            
-            if currentIndex == index {
-                return currentList.value
-            }
-            
+        for _ in 0..<index {
             guard let next = currentList.nextItem else {
-                break
+                return nil
             }
-            
-            currentIndex += 1
             currentList = next
         }
         
-        return nil
+        return currentList.value
     }
 }
