@@ -57,7 +57,26 @@ extension List {
 //MARK: P03 - Find the kth element of a linked list
 
 extension List {
+    
     subscript(index: Int) -> T? {
+        
+        var currentIndex = 0
+        var currentList = self
+        
+        while currentIndex <= index {
+            
+            if currentIndex == index {
+                return currentList.value
+            }
+            
+            guard let next = currentList.nextItem else {
+                break
+            }
+            
+            currentIndex += 1
+            currentList = next
+        }
+        
         return nil
     }
 }
