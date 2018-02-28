@@ -82,3 +82,31 @@ class P02Tests: XCTestCase {
         XCTAssertEqual(pennultimate, 3)
     }
 }
+
+class P03Tests: XCTestCase {
+    
+    //MARK: P03 - Find the kth element of a linked list
+    
+    func testSubscriptForSingleItemList() {
+        let list = List(1)!
+        XCTAssertEqual(list[0], 1)
+        XCTAssertNil(list[1])
+    }
+    
+    func testSubscriptForDoubleItemList() {
+        let list = List(2, 3)!
+        XCTAssertEqual(list[0], 2)
+        XCTAssertEqual(list[1], 3)
+        XCTAssertNil(list[2])
+    }
+    
+    func testSubscriptForManyItemList() {
+        let list = List(1, 1, 2, 3, 5)!
+        XCTAssertEqual(list[0], 1)
+        XCTAssertEqual(list[1], 1)
+        XCTAssertEqual(list[2], 2)
+        XCTAssertEqual(list[3], 3)
+        XCTAssertEqual(list[4], 5)
+        XCTAssertNil(list[5])
+    }
+}
