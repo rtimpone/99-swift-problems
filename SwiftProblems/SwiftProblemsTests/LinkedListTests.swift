@@ -110,3 +110,26 @@ class P03Tests: XCTestCase {
         XCTAssertNil(list[5])
     }
 }
+
+class P04Tests: XCTestCase {
+    
+    //MARK: P04 - Find the number of items in a linked list
+    
+    func testFindLengthOfSingleItemList() {
+        let list = List(1)!
+        let length = list.length
+        XCTAssertEqual(length, 1)
+    }
+    
+    func testFindLengthOfDoubleItemList() {
+        let list = List(1, 2)!
+        let length = list.length
+        XCTAssertEqual(length, 2)
+    }
+    
+    func testFindLengthOfMultiItemList() {
+        let list = List(1, 1, 2, 3, 5)!
+        let length = list.length
+        XCTAssertEqual(length, 5)
+    }
+}

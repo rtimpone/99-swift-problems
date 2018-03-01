@@ -72,3 +72,13 @@ extension List {
         return currentList.value
     }
 }
+
+//MARK: P04 - Find the number of items in a linked list
+
+extension List {
+    
+    var length: Int {
+        
+        return 0
+    }
+}
