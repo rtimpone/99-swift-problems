@@ -79,6 +79,14 @@ extension List {
     
     var length: Int {
         
-        return 0
+        var list = self
+        var numberOfItems = 1
+        
+        while let next = list.nextItem {
+            numberOfItems += 1
+            list = next
+        }
+        
+        return numberOfItems
     }
 }
