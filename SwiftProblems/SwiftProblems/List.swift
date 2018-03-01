@@ -10,7 +10,7 @@ import Foundation
 
 class List<T> {
     
-    var value: T?
+    var value: T
     var nextItem: List<T>?
     
     init?(_ values: [T]) {
