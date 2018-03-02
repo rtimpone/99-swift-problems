@@ -8,7 +8,7 @@
 
 import Foundation
 
-class List<T> {
+class List<T: Equatable> {
     
     var value: T
     var nextItem: List<T>?
@@ -101,9 +101,29 @@ extension List {
     }
 }
 
+//NOTE: In Swift 4.1, will be able to use conditional conformance to make List conform to Equatable only when T is Equatable
+
 extension List: Equatable {
-    
+
     static func ==(lhs: List<T>, rhs: List<T>) -> Bool {
+        
+        var leftList = lhs
+        var rightList = rhs
+        
+        while leftList.value == rightList.value {
+            
+            if leftList.isLastItem && rightList.isLastItem {
+                return true
+            }
+            
+            guard let leftNextItem = leftList.nextItem, let rightNextItem = rightList.nextItem else {
+                return false
+            }
+            
+            leftList = leftNextItem
+            rightList = rightNextItem
+        }
+        
         return false
     }
 }
