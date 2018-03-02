@@ -187,22 +187,22 @@ class P05Tests: XCTestCase {
 
     func testReverseSingleItemList() {
         let list = List(1)
-        let reversedList = list?.reverse()
+        list?.reverse()
         let expectedResult = List(1)
-        XCTAssertEqual(reversedList, expectedResult)
+        XCTAssertEqual(list, expectedResult)
     }
     
     func testReverseDoubleItemList() {
         let list = List(1, 2)
-        let reversedList = list?.reverse()
+        list?.reverse()
         let expectedResult = List(2, 1)
-        XCTAssertEqual(reversedList, expectedResult)
+        XCTAssertEqual(list, expectedResult)
     }
     
     func testReverseMultiItemList() {
         let list = List(1, 1, 2, 3, 5)
-        let reversedList = list?.reverse()
+        list?.reverse()
         let expectedResult = List(5, 3, 2, 1, 1)
-        XCTAssertEqual(reversedList, expectedResult)
+        XCTAssertEqual(list, expectedResult)
     }
 }

@@ -97,7 +97,24 @@ extension List {
     
     func reverse() {
         
+        var oldTail: List? = nil
+        var newTail: List? = nil
         
+        var currentList = self
+        
+        while !currentList.isLastItem {
+            
+            newTail = List(currentList.value)
+            newTail?.nextItem = oldTail
+            oldTail = newTail
+            
+            if let next = currentList.nextItem {
+                currentList = next
+            }
+        }
+        
+        self.value = currentList.value
+        self.nextItem = newTail
     }
 }
 
