@@ -90,3 +90,20 @@ extension List {
         return numberOfItems
     }
 }
+
+//MARK: P05 - Reverse a linked list
+
+extension List {
+    
+    func reverse() -> List {
+        
+        return self
+    }
+}
+
+extension List: Equatable {
+    
+    static func ==(lhs: List<T>, rhs: List<T>) -> Bool {
+        return false
+    }
+}
