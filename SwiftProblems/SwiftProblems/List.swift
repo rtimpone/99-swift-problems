@@ -95,9 +95,9 @@ extension List {
 
 extension List {
     
-    func reverse() -> List {
+    func reverse() {
         
-        return self
+        
     }
 }
 
