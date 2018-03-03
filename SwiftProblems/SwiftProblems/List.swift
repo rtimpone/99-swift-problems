@@ -140,3 +140,13 @@ extension List: Equatable {
         return false
     }
 }
+
+//MARK: P06 - Determine whether a linked list is a palindrome or not
+
+extension List {
+    
+    func isPalindrome() -> Bool {
+        
+        return false
+    }
+}
