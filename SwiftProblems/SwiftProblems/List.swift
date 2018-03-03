@@ -147,6 +147,32 @@ extension List {
     
     func isPalindrome() -> Bool {
         
-        return false
+        var list = self
+        var numberOfItems = 1
+        var values = [value]
+        
+        while let next = list.nextItem {
+            list = next
+            numberOfItems += 1
+            values.append(list.value)
+        }
+        
+        var leftPointer = 0
+        var rightPointer = values.endIndex - 1
+        
+        while leftPointer < rightPointer {
+            
+            let leftValue = values[leftPointer]
+            let rightValue = values[rightPointer]
+            
+            if leftValue != rightValue {
+                return false
+            }
+            
+            leftPointer += 1
+            rightPointer -= 1
+        }
+        
+        return true
     }
 }
