@@ -157,20 +157,20 @@ extension List {
             values.append(list.value)
         }
         
-        var leftPointer = 0
-        var rightPointer = values.endIndex - 1
+        var leftIndex = 0
+        var rightIndex = values.endIndex - 1
         
-        while leftPointer < rightPointer {
+        while leftIndex < rightIndex {
             
-            let leftValue = values[leftPointer]
-            let rightValue = values[rightPointer]
+            let leftValue = values[leftIndex]
+            let rightValue = values[rightIndex]
             
             if leftValue != rightValue {
                 return false
             }
             
-            leftPointer += 1
-            rightPointer -= 1
+            leftIndex += 1
+            rightIndex -= 1
         }
         
         return true
