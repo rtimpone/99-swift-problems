@@ -140,3 +140,39 @@ extension List: Equatable {
         return false
     }
 }
+
+//MARK: P06 - Determine whether a linked list is a palindrome or not
+
+extension List {
+    
+    func isPalindrome() -> Bool {
+        
+        var list = self
+        var numberOfItems = 1
+        var values = [value]
+        
+        while let next = list.nextItem {
+            list = next
+            numberOfItems += 1
+            values.append(list.value)
+        }
+        
+        var leftIndex = 0
+        var rightIndex = values.endIndex - 1
+        
+        while leftIndex < rightIndex {
+            
+            let leftValue = values[leftIndex]
+            let rightValue = values[rightIndex]
+            
+            if leftValue != rightValue {
+                return false
+            }
+            
+            leftIndex += 1
+            rightIndex -= 1
+        }
+        
+        return true
+    }
+}
