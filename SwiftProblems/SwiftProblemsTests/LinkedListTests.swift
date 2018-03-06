@@ -134,53 +134,6 @@ class P04Tests: XCTestCase {
     }
 }
 
-class EqualityTests: XCTestCase {
-    
-    func testSingleItemListEquality() {
-        
-        let list = List(1)
-        
-        let matchingList = List(1)
-        XCTAssertEqual(list, matchingList)
-        
-        let nonMatchingList1 = List(2)
-        let nonMatchingList2 = List(1, 2)
-        XCTAssertNotEqual(list, nonMatchingList1)
-        XCTAssertNotEqual(list, nonMatchingList2)
-    }
-    
-    func testDoubleItemListEquality() {
-        
-        let list = List(1, 2)
-        
-        let matchingList = List(1, 2)
-        XCTAssertEqual(list, matchingList)
-        
-        let nonMatchingList1 = List(1)
-        let nonMatchingList2 = List(2, 1)
-        let nonMatchingList3 = List(1, 2, 3)
-        XCTAssertNotEqual(list, nonMatchingList1)
-        XCTAssertNotEqual(list, nonMatchingList2)
-        XCTAssertNotEqual(list, nonMatchingList3)
-    }
-    
-    func testMultiItemListEquality() {
-        
-        let list = List(1, 1, 2, 3, 5)
-        
-        let matchingList = List(1, 1, 2, 3, 5)
-        XCTAssertEqual(list, matchingList)
-        
-        let nonMatchingList1 = List(1)
-        let nonMatchingList2 = List(1, 1, 2, 3, 5, 8)
-        let nonMatchingList3 = List(1, 1, 2, 3)
-        
-        XCTAssertNotEqual(list, nonMatchingList1)
-        XCTAssertNotEqual(list, nonMatchingList2)
-        XCTAssertNotEqual(list, nonMatchingList3)
-    }
-}
-
 class P05Tests: XCTestCase {
 
 //MARK: P05 - Reverse a linked list
