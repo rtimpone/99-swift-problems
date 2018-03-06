@@ -148,12 +148,10 @@ extension List {
     func isPalindrome() -> Bool {
         
         var list = self
-        var numberOfItems = 1
         var values = [value]
         
         while let next = list.nextItem {
             list = next
-            numberOfItems += 1
             values.append(list.value)
         }
         
