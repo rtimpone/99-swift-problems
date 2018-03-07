@@ -30,6 +30,31 @@ class List<T> {
     }
 }
 
+extension List: Equatable where T: Equatable {
+    
+    static func ==(lhs: List<T>, rhs: List<T>) -> Bool {
+        
+        var leftList = lhs
+        var rightList = rhs
+        
+        while leftList.value == rightList.value {
+            
+            if leftList.isLastItem && rightList.isLastItem {
+                return true
+            }
+            
+            guard let leftNextItem = leftList.nextItem, let rightNextItem = rightList.nextItem else {
+                return false
+            }
+            
+            leftList = leftNextItem
+            rightList = rightNextItem
+        }
+        
+        return false
+    }
+}
+
 //MARK: P01 - Find the last element of a linked list
 
 extension List {
