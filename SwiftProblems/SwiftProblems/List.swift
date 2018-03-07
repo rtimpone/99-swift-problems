@@ -172,3 +172,13 @@ extension List where T: Equatable {
         return true
     }
 }
+
+//MARK: P07 - Flatten a nested linked list
+
+extension List {
+    
+    func flatten() -> List {
+        
+        return self
+    }
+}

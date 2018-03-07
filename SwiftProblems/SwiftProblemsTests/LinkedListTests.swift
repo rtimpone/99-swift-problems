@@ -246,3 +246,70 @@ class P06Tests: XCTestCase {
         XCTAssertFalse(nonPalindromicList3.isPalindrome())
     }
 }
+
+class P07Tests: XCTestCase {
+    
+    //MARK: P07 - Flatten a nested linked list
+    
+    func testFlattenSingleDepthList() {
+        let list = List(1, 1, 2, 3, 5, 8)!
+        let flattenedList = list.flatten()
+        let expectedResult = List(1, 1, 2, 3, 5, 8)
+        XCTAssertEqual(flattenedList, expectedResult)
+    }
+    
+    func testFlattenDoubleDepthList() {
+        let list: List<Any> = List(1, List(1, 2)!, 3, 5, 8)!
+        let flattenedList = list.flatten()
+        let flattenedListString = stringForListOfValues(fromList: flattenedList)
+        let expectedResult = List(1, 1, 2, 3, 5, 8)!
+        let expectedResultString = stringForListOfValues(fromList: expectedResult)
+        XCTAssertEqual(flattenedListString, expectedResultString)
+    }
+    
+    func testFlattenTripleDepthList() {
+        let list: List<Any> = List(1, List<Any>(1, List(2, 3)!)!, 5, 8)!
+        let flattenedList = list.flatten()
+        let flattenedListString = stringForListOfValues(fromList: flattenedList)
+        let expectedResult = List(1, 1, 2, 3, 5, 8)!
+        let expectedResultString = stringForListOfValues(fromList: expectedResult)
+        XCTAssertEqual(flattenedListString, expectedResultString)
+    }
+    
+    func stringForListOfValues<T>(fromList list: List<T>) -> String {
+        var valuesAsStrings = ["\(list.value)"]
+        var currentList = list
+        while let next = currentList.nextItem {
+            let valueAsString = "\(next.value)"
+            valuesAsStrings.append(valueAsString)
+            currentList = next
+        }
+        return valuesAsStrings.joined(separator: ",")
+    }
+    
+    func testStringForSingleItemList() {
+        let list = List(1)!
+        let valuesString = stringForListOfValues(fromList: list)
+        XCTAssertEqual(valuesString, "1")
+    }
+    
+    func testStringForDoubleItemList() {
+        let list = List(1, 2)!
+        let valuesString = stringForListOfValues(fromList: list)
+        XCTAssertEqual(valuesString, "1,2")
+    }
+    
+    func testStringForMultiItemList() {
+        let list = List(1, 1, 2, 3, 5, 8)!
+        let valuesString = stringForListOfValues(fromList: list)
+        XCTAssertEqual(valuesString, "1,1,2,3,5,8")
+    }
+    
+    func testStringForMultiItemListEquality() {
+        let list = List(1, 1, 2, 3, 5, 8)!
+        let matchingList = List(1, 1, 2, 3, 5, 8)!
+        let listValuesAsString = stringForListOfValues(fromList: list)
+        let matchingListValuesAsString = stringForListOfValues(fromList: matchingList)
+        XCTAssertEqual(listValuesAsString, matchingListValuesAsString)
+    }
+}
