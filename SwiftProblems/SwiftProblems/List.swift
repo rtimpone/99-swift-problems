@@ -141,9 +141,9 @@ extension List {
 
 //MARK: P06 - Determine whether a linked list is a palindrome or not
 
-extension List where T: Equatable {
+extension List {
     
-    func isPalindrome() -> Bool {
+    func allValues() -> [T] {
         
         var list = self
         var values = [value]
@@ -152,6 +152,16 @@ extension List where T: Equatable {
             list = next
             values.append(list.value)
         }
+        
+        return values
+    }
+}
+
+extension List where T: Equatable {
+    
+    func isPalindrome() -> Bool {
+        
+        let values = allValues()
         
         var leftIndex = 0
         var rightIndex = values.endIndex - 1
@@ -176,9 +186,29 @@ extension List where T: Equatable {
 //MARK: P07 - Flatten a nested linked list
 
 extension List {
-    
+
     func flatten() -> List {
-        
-        return self
+
+//        let list: List<Any> = List(1, List(1, 2)!, 3, 5, 8)!
+
+        var currentList = self
+        var values = [value]
+
+        while let next = currentList.nextItem {
+
+            currentList = next
+            let clValue = currentList.value
+            
+            switch clValue {
+            case let listValue as List:
+                let flatList = listValue.flatten()
+                let allValues = flatList.allValues()
+                values.append(contentsOf: allValues)
+            default:
+                values.append(clValue)
+            }
+        }
+
+        return List(values)!
     }
 }
