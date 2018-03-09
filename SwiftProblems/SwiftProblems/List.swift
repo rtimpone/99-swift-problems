@@ -189,10 +189,16 @@ extension List {
 
     func flatten() -> List {
 
-//        let list: List<Any> = List(1, List(1, 2)!, 3, 5, 8)!
-
         var currentList = self
-        var values = [value]
+        var values = [T]()
+        
+        if let valueAsList = value as? List {
+            let flattenedList = valueAsList.flatten()
+            values.append(contentsOf: flattenedList.allValues())
+        }
+        else {
+            values.append(value)
+        }
 
         while let next = currentList.nextItem {
 
@@ -211,4 +217,3 @@ extension List {
         return List(values)!
     }
 }
-
