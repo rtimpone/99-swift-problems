@@ -30,6 +30,31 @@ class List<T> {
     }
 }
 
+extension List: Equatable where T: Equatable {
+    
+    static func ==(lhs: List<T>, rhs: List<T>) -> Bool {
+        
+        var leftList = lhs
+        var rightList = rhs
+        
+        while leftList.value == rightList.value {
+            
+            if leftList.isLastItem && rightList.isLastItem {
+                return true
+            }
+            
+            guard let leftNextItem = leftList.nextItem, let rightNextItem = rightList.nextItem else {
+                return false
+            }
+            
+            leftList = leftNextItem
+            rightList = rightNextItem
+        }
+        
+        return false
+    }
+}
+
 //MARK: P01 - Find the last element of a linked list
 
 extension List {
@@ -116,9 +141,9 @@ extension List {
 
 //MARK: P06 - Determine whether a linked list is a palindrome or not
 
-extension List where T: Equatable {
+extension List {
     
-    func isPalindrome() -> Bool {
+    func allValues() -> [T] {
         
         var list = self
         var values = [value]
@@ -127,6 +152,16 @@ extension List where T: Equatable {
             list = next
             values.append(list.value)
         }
+        
+        return values
+    }
+}
+
+extension List where T: Equatable {
+    
+    func isPalindrome() -> Bool {
+        
+        let values = allValues()
         
         var leftIndex = 0
         var rightIndex = values.endIndex - 1
@@ -145,5 +180,37 @@ extension List where T: Equatable {
         }
         
         return true
+    }
+}
+
+//MARK: P07 - Flatten a nested linked list
+
+extension List {
+
+    func flatten() -> List {
+
+        var currentList = self
+        var values = [T]()
+        
+        while true {
+            
+            let currentValue = currentList.value
+            
+            if let valueAsList = currentValue as? List {
+                let flattenedList = valueAsList.flatten()
+                values.append(contentsOf: flattenedList.allValues())
+            }
+            else {
+                values.append(currentValue)
+            }
+            
+            guard let next = currentList.nextItem else {
+                break
+            }
+            
+            currentList = next
+        }
+
+        return List(values)!
     }
 }
