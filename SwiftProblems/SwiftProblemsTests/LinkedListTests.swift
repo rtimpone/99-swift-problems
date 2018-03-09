@@ -259,7 +259,7 @@ class P07Tests: XCTestCase {
     }
     
     func testFlattenDoubleDepthList() {
-        let list: List<Any> = List(1, List(1, 2)!, 3, 5, 8)!
+        let list: List<Any> = List(1, List<Any>(1, 2)!, 3, 5, 8)!
         let flattenedList = list.flatten()
         let flattenedListString = stringForListOfValues(fromList: flattenedList)
         let expectedResult = List(1, 1, 2, 3, 5, 8)!
@@ -268,7 +268,7 @@ class P07Tests: XCTestCase {
     }
     
     func testFlattenTripleDepthList() {
-        let list: List<Any> = List(1, List<Any>(1, List(2, 3)!)!, 5, 8)!
+        let list: List<Any> = List(List<Any>(1, List<Any>(1, 2)!)!, 3, 5, 8)!
         let flattenedList = list.flatten()
         let flattenedListString = stringForListOfValues(fromList: flattenedList)
         let expectedResult = List(1, 1, 2, 3, 5, 8)!
