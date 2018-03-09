@@ -192,17 +192,8 @@ extension List {
         var currentList = self
         var values = [T]()
         
-        if let valueAsList = value as? List {
-            let flattenedList = valueAsList.flatten()
-            values.append(contentsOf: flattenedList.allValues())
-        }
-        else {
-            values.append(value)
-        }
-
-        while let next = currentList.nextItem {
-
-            currentList = next
+        while true {
+            
             let currentValue = currentList.value
             
             if let valueAsList = currentValue as? List {
@@ -212,6 +203,12 @@ extension List {
             else {
                 values.append(currentValue)
             }
+            
+            guard let next = currentList.nextItem else {
+                break
+            }
+            
+            currentList = next
         }
 
         return List(values)!
