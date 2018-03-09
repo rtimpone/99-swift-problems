@@ -197,18 +197,18 @@ extension List {
         while let next = currentList.nextItem {
 
             currentList = next
-            let clValue = currentList.value
+            let currentValue = currentList.value
             
-            switch clValue {
-            case let listValue as List:
-                let flatList = listValue.flatten()
-                let allValues = flatList.allValues()
-                values.append(contentsOf: allValues)
-            default:
-                values.append(clValue)
+            if let valueAsList = currentValue as? List {
+                let flattenedList = valueAsList.flatten()
+                values.append(contentsOf: flattenedList.allValues())
+            }
+            else {
+                values.append(currentValue)
             }
         }
 
         return List(values)!
     }
 }
+
