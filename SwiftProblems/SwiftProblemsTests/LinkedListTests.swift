@@ -275,17 +275,27 @@ class P07Tests: XCTestCase {
         let expectedResultString = stringForListOfValues(fromList: expectedResult)
         XCTAssertEqual(flattenedListString, expectedResultString)
     }
-    
-    func stringForListOfValues<T>(fromList list: List<T>) -> String {
-        var valuesAsStrings = ["\(list.value)"]
-        var currentList = list
-        while let next = currentList.nextItem {
-            let valueAsString = "\(next.value)"
-            valuesAsStrings.append(valueAsString)
-            currentList = next
-        }
-        return valuesAsStrings.joined(separator: ",")
+}
+
+/**
+ Returns a string representation of all values from a List
+ 
+ List<Any> cannot conform to equatable, so we can't use XCTAssertEqual with it for P07
+ This function allows us to convert a list to a string, which is equatable, so we can
+ compare two Lists
+ */
+fileprivate func stringForListOfValues<T>(fromList list: List<T>) -> String {
+    var valuesAsStrings = ["\(list.value)"]
+    var currentList = list
+    while let next = currentList.nextItem {
+        let valueAsString = "\(next.value)"
+        valuesAsStrings.append(valueAsString)
+        currentList = next
     }
+    return valuesAsStrings.joined(separator: ",")
+}
+
+class StringForListOfValuesTests: XCTestCase {
     
     func testStringForSingleItemList() {
         let list = List(1)!
